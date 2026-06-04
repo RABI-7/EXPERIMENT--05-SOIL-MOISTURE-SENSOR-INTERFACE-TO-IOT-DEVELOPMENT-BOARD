@@ -107,13 +107,55 @@ GND is the ground pin.
 
 
 ## STM 32 CUBE PROGRAM :
+```
+#include "main.h"
+#include "stdio.h"
+#if defined(__GNUC_s_)
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#endif
+uint16_t readValue;
 
+ADC_HandleTypeDef hadc;
+UART_HandleTypeDef huart2;
+void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_ADC_Init(void);
+static void MX_USART2_UART_Init(void);
+int main(void)
+{
+
+    HAL_Init();
+    SystemClock_Config();
+
+    MX_GPIO_Init();
+  MX_ADC_Init();
+  MX_USART2_UART_Init();
+    while (1)
+  {
+    	  HAL_ADC_Start(&hadc);
+         HAL_ADC_PollForConversion(&hadc, HAL_MAX_DELAY);
+	  readValue = HAL_ADC_GetValue(&hadc);
+	printf("Read value : %d\n", readValue);
+	HAL_ADC_Stop(&hadc);
+	uint32_t soilmoist = 100 - (readValue / 40.96);
+	 printf("Soil moisture : %ld %%\n", soilmoist);
+	HAL_Delay(1000);
+      }
+  }
+PUTCHAR_PROTOTYPE
+{
+	HAL_UART_Transmit(&huart2, (uint8_t *)&ch, 1, 0xFFFF);
+	return ch;
+}
+```
 
 
 ## Output screen shots on serial monitor   :
  
- 
- 
+ <img width="1600" height="953" alt="IMG-20260515-WA0019" src="https://github.com/user-attachments/assets/fd040902-4799-440a-9e13-a77b626b6029" />
+
+ <img width="1080" height="2392" alt="IMG_20260515_142542" src="https://github.com/user-attachments/assets/c14d10d5-fd8b-46fb-b594-1a745d0501da" />
+
  
 ## Result :
 Interfacing a Analog Input (soil moisture sensor) with ARM microcontroller based IOT development is executed and the results visualized on serial monitor 
