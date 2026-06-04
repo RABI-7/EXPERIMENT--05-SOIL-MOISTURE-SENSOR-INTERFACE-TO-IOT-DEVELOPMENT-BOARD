@@ -154,7 +154,7 @@ PUTCHAR_PROTOTYPE
  
  <img width="1600" height="953" alt="IMG-20260515-WA0019" src="https://github.com/user-attachments/assets/fd040902-4799-440a-9e13-a77b626b6029" />
 
- <img width="1080" height="2392" alt="IMG_20260515_142542" src="https://github.com/user-attachments/assets/c14d10d5-fd8b-46fb-b594-1a745d0501da" />
+ <img width="718" height="1600" alt="17264193-be71-4a4f-97ac-81beb6f2010b" src="https://github.com/user-attachments/assets/92fc56fe-159b-4297-b9c9-05d7173d8eb3" />
 
  
 ## Result :
